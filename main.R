@@ -149,9 +149,19 @@ summarize_rows <- function(x, fn, na.rm=FALSE) {
 #' 3 -0.09040182 1.027559 -0.02774705 -3.026888 2.353087      130              54      0
 #' 4  0.09518138 1.030461  0.11294781 -3.409049 2.544992       90              72      0
 summarize_matrix <- function(x, na.rm=FALSE) {
-    # First getting all column information from the matrix 
-    df <- data.frame(mean = summarize_rows(x, mean))
-    df <- data.frame(stdev = summarize_rows(x, stdev))
+    # First getting all column information from the matrix using the summarize_rows function
+    df <- data.frame(
+                      'mean' = summarize_rows(x, mean),
+                      'stdev' = summarize_rows(x, stdev),
+                      'median' = summarize_rows(x, median),
+                      'min' = summarize_rows(x, min),
+                      'max' = summarize_rows(x, max),
+                      'num_lt_0' = sum(summarize_rows(x, less_than_zero),
+                      'num_btw_1_and_5' = summarize_rows(x, function(row) sum(is_between(row, 1, 5)),
+                      ''
+    )
+    
+    
     
     stdev <- apply(x, 1, sd)
     median <- apply(x, 1, median)
