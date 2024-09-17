@@ -21,7 +21,7 @@ Please read sections 5.3 through 5.10 in the textbook. Section 5.3 starts [here]
 
 ### Instructions
 
-Please use the github classroom link provided on blackboardto create your own repo
+Please use the github classroom link provided on blackboard to create your own repo
 for this assignment.
 
 The project is laid out as such:  
@@ -34,7 +34,7 @@ reference_report.html
 ```
 
 Each step of the assignment is explained in the R markdown file, `report.Rmd`.
-There you will find a list of tasks to explicity implement functions in your
+There you will find a list of tasks to explicitly implement functions in your
 empty `main.R` script. The `main.R` script contains stubs of each function
 you'll need to implement, explaining what each function should do, the parameters
 it expects to receive, and what type of output is expected to be returned. A
