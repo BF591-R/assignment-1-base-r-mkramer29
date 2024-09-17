@@ -2,7 +2,7 @@
 
 #' Evaluate whether the argument is less than 0
 #'
-#' Returns TRUE if the numeric argument x is a prime number, otherwise returns
+#' Returns TRUE if the numeric argument x is less than 0, otherwise returns
 #' FALSE
 #'
 #' @param x (numeric): the numeric value(s) to test
@@ -18,7 +18,7 @@
 #' less_than_zero(c(-1,0,1,2,3,4))
 #' [1] TRUE FALSE FALSE FALSE FALSE FALSE
 less_than_zero <- function(x) {
-  # Return x < 0
+  # Return values where x < 0
   return(x < 0)
 }
 
@@ -152,24 +152,14 @@ summarize_matrix <- function(x, na.rm=FALSE) {
     # First getting all column information from the matrix using the summarize_rows function
     df <- data.frame(
                       'mean' = summarize_rows(x, mean),
-                      'stdev' = summarize_rows(x, stdev),
+                      'stdev' = summarize_rows(x, sd),
                       'median' = summarize_rows(x, median),
                       'min' = summarize_rows(x, min),
                       'max' = summarize_rows(x, max),
-                      'num_lt_0' = sum(summarize_rows(x, less_than_zero),
-                      'num_btw_1_and_5' = summarize_rows(x, function(row) sum(is_between(row, 1, 5)),
-                      ''
-    )
-    
-    
-    
-    stdev <- apply(x, 1, sd)
-    median <- apply(x, 1, median)
-    min <- apply(x, 1, min)
-    max <- apply(x, 1, max)
-    num_lt_0 <- less_than_zero(x)
-    num_btw_1_and_5 <- is_between(x)
-    num_na <- rm_na(x)
+                      'num_lt_0' = sum(summarize_rows(x, less_than_zero)),
+                      'num_btw_1_and_5' = summarize_rows(x, function(row) sum(is_between(row, 1, 5))),
+                      'num_na' = sum(is.na(x))
+                    )
     return(df)
 }
 
